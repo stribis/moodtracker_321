@@ -1,13 +1,29 @@
 
 
 // Get User geolocation
-
+let lat, lon
 if ( 'geolocation' in navigator) {
   //console.log(navigator)
 
-  navigator.geolocation.getCurrentPosition(position => {
-    console.log(position.coords.latitude)
-    console.log(position.coords.longitude)
+  navigator.geolocation.getCurrentPosition(async position => {
+
+    try {
+      lat = position.coords.latitude
+      lon = position.coords.longitude
+
+      // Prepare for http request
+      const apiUrl = `weather/${lat},${lon}`
+
+      // Get response from server
+      const response = await fetch(apiUrl)
+      const data = await response.json()
+
+      console.log(data)
+
+    } catch (err) {
+      console.error(err)
+    }
+
   })
 
 } else {

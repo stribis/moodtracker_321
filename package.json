@@ -9,6 +9,7 @@
   "author": "Martin Hutchings",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "node-fetch": "^2.6.7"
   }
 }
