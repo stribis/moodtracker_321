@@ -1,7 +1,7 @@
 
 
 // Get User geolocation
-let lat, lon
+let lat, lon, city, temp, description, aqi
 if ( 'geolocation' in navigator) {
   //console.log(navigator)
 
@@ -19,6 +19,24 @@ if ( 'geolocation' in navigator) {
       const data = await response.json()
 
       console.log(data)
+
+      city = data.weather.name
+      temp = data.weather.weather[0].description
+
+      const template = `
+      <div class="more-info">
+        <div>${temp}</div>
+        <div>${description}</div>
+        <hr>
+        <div>${city}</div>
+        <div><span>Lat: ${lat}</span><span>Lon: ${lon}</span></div>
+        <div>AQI: WiP</div>
+      </div>
+      `
+
+      const weatherDiv = document.createElement('div')
+      weatherDiv.innerHTML = template
+      document.querySelector('#main-container').append(weatherDiv)
 
     } catch (err) {
       console.error(err)

@@ -16,10 +16,14 @@ app.listen(port, ()=> {
 
 // Setting up the server
 app.use(express.static('public'))
+app.use(express.json({
+  limit: '300mb'
+}))
 
 // Weather API Get Route
 app.get('/weather/:latlon',async (req, res) => {
   const latlon = req.params.latlon.split(',')
+
   //console.log(latlon)
   const weatherApiKey = '108c1179d5f49e7ba876cdd2b2e7f156'
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latlon[0]}&lon=${latlon[1]}&appid=${weatherApiKey}`
@@ -28,6 +32,13 @@ app.get('/weather/:latlon',async (req, res) => {
   const weatherResponse = await fetch(weatherUrl)
   const weatherData = await weatherResponse.json()
 
-  console.log(weatherData)
+  //console.log(weatherData)
+
+  const data = {
+    weather: weatherData
+  }
+
+  res.json(data)
+
 
 })
