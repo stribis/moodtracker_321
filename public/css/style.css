@@ -1,0 +1,118 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@200;400;900&display=swap');
+
+
+/* Small Reset */
+*::before, *::after, * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  background: linear-gradient(to bottom left,hotpink, orangered);
+  min-height: 100vh;
+  font-family: 'Catamaran', sans-serif;
+  color: white;
+  font-weight: 200;
+}
+
+h1 {
+  font-weight: 800;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+header ul{
+  list-style: none;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+header ul li {
+  border: solid 1px white;
+  border-radius: 0.8rem;
+  padding: 1rem 1.2rem;
+}
+
+header ul li a{ 
+  text-decoration: none;
+  color: white;
+  font-weight: 800;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  text-align: center;
+}
+
+form input[type="text"] {
+  padding: 0.6rem 0.8rem;
+  background: transparent;
+  color: white;
+  font-size: 1.3rem;
+  border: solid 1px white;
+  margin-bottom: 1rem;
+
+}
+
+form button {
+  padding: 0.6rem 0.8rem;
+  background: transparent;
+  color: white;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  border: solid 1px white;
+  margin-bottom: 2rem;
+}
+
+.tracker-page .entry-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.tracker-page .entry-container > div {
+  border: solid 1px white;
+  padding: 1rem;
+  position: relative;
+  box-shadow: white 2px 2px 5px;
+}
+
+li.active {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.delete {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.delete:hover {
+  color: red;
+  cursor: pointer;
+  text-shadow: black 1px 1px 2px;
+}

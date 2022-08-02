@@ -74,3 +74,12 @@ app.get('/api', (req, res) => {
     }
   })
 })
+
+app.get('/delete/:id', (req, res) => {
+  console.log(req.params.id)
+  database.remove({ _id: req.params.id }, {}, function (err, numRemoved) {
+    // numRemoved = 1
+    console.log('Removed ' + numRemoved + 'item(s) from the database')
+    res.json({success: true, itemsRemoved: numRemoved})
+  });
+})
