@@ -1,14 +1,13 @@
 const express = require('express')
 const fetch = require('node-fetch')
 const Datastore = require('nedb')
-// TODO:
-// require DB
+require('dotenv').config()
 
 
 // Start Express
 const app = express()
 
-const port = 3000
+const port =  process.env.PORT || 3000
 
 app.listen(port, ()=> {
   console.log(`App is listening at: http://127.0.0.1:${port}`)
@@ -28,9 +27,9 @@ app.get('/weather/:latlon',async (req, res) => {
   const latlon = req.params.latlon.split(',')
 
   // API Weather
-  const weatherApiKey = '108c1179d5f49e7ba876cdd2b2e7f156'
+  const weatherApiKey = process.env.API_KEY_WEATHER
   // API Key for AQI
-  const aqiApiKey = 'e1f7a79f01fe686d0c03b7585a983a2e6c7d35b3'
+  const aqiApiKey = process.env.API_KEY_AQI
   // Weather URL
   const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latlon[0]}&lon=${latlon[1]}&appid=${weatherApiKey}&units=metric`
   // AQI URL
